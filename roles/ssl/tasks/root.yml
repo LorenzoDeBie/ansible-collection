@@ -5,7 +5,7 @@
     path: "{{ ssl_root_ca_dir }}"
     mode: 0755
     owner: root
-    group: root
+    group: wheel
     state: directory
 
 - name: Generate root key
@@ -13,7 +13,7 @@
     path: "{{ ssl_root_ca_dir }}/{{ ssl_root_ca_key }}"
     mode: 0400
     owner: root
-    group: root
+    group: wheel
 
 - name: Create root CSR
   community.crypto.openssl_csr:
@@ -29,7 +29,7 @@
     key_usage_critical: true
     mode: 0640
     owner: root
-    group: root
+    group: wheel
 
 - name: Generate root CA certificate
   community.crypto.x509_certificate:
@@ -39,4 +39,4 @@
     csr_path: "{{ ssl_root_ca_dir }}/ca.csr"
     mode: 0644
     owner: root
-    group: root
+    group: wheel

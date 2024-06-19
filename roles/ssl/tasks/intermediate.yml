@@ -4,7 +4,7 @@
     path: "{{ ssl_intermediate_ca_dir }}"
     mode: 0755
     owner: root
-    group: root
+    group: wheel
     state: directory
 
 - name: Generate intermediate key
@@ -12,7 +12,7 @@
     path: "{{ ssl_intermediate_ca_dir }}/{{ ssl_intermediate_ca_key }}"
     mode: 0400
     owner: root
-    group: root
+    group: wheel
 
 - name: Create intermediate CSR
   community.crypto.openssl_csr:
@@ -28,7 +28,7 @@
     key_usage_critical: true
     mode: 0640
     owner: root
-    group: root
+    group: wheel
 
 - name: Generate intermediate CA certificate
   community.crypto.x509_certificate:
@@ -39,6 +39,6 @@
     ownca_path: "{{ ssl_root_ca_dir }}/{{ ssl_root_ca_cert }}"
     mode: 0640
     owner: root
-    group: root
+    group: wheel
     return_content: true
   register: intermediate_cert

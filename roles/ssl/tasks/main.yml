@@ -45,7 +45,7 @@
     owner: "{{ item.owner }}"
     group: "{{ item.group }}"
   with_items:
-    - src: "{{ ssl_cert_dir }}/cert.crt"
+    - src: "{{ ssl_cert_dir }}/{{ inventory_hostname }}.crt"
       dest: "{{ ssl_remote_tls_dir }}/{{ ssl_remote_cert_name }}.crt"
       mode: "0640"
       owner: "{{ ssl_remote_user }}"

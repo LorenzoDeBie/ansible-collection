@@ -38,20 +38,20 @@
 - name: Fetch CSR from remote to localhost
   fetch:
     src: "{{ ssl_remote_tls_dir }}/host.csr"
-    dest: "{{ ssl_cert_dir }}/host.csr"
+    dest: "{{ ssl_cert_dir }}/{{ inventory_hostname }}.csr"
     flat: true
 
 - name: Get owner UID of CSR
   stat:
-    path: "{{ ssl_cert_dir }}/host.csr"
+    path: "{{ ssl_cert_dir }}/{{ inventory_hostname }}.csr"
   register: st
   delegate_to: localhost
 
 - name: Sign remote certificate with root CA
   become: true
   community.crypto.x509_certificate:
-    path: "{{ ssl_cert_dir }}/cert.crt"
-    csr_path: "{{ ssl_cert_dir }}/host.csr"
+    path: "{{ ssl_cert_dir }}/{{ inventory_hostname }}.crt"
+    csr_path: "{{ ssl_cert_dir }}/{{ inventory_hostname }}.csr"
     provider: ownca
     ownca_path: "{{ ssl_intermediate_ca_dir }}/{{ ssl_intermediate_ca_cert }}"
     ownca_privatekey_path: "{{ ssl_intermediate_ca_dir }}/{{ ssl_intermediate_ca_key }}"
