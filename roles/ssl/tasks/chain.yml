@@ -17,7 +17,7 @@
     dest: "{{ item }}"
     mode: 0644
     owner: root
-    group: root
+    group: wheel
   with_items:
     - "{{ ssl_intermediate_ca_dir }}/ca-chain.crt"
     - "{{ ssl_ca_chain_path }}"
