@@ -1,9 +1,9 @@
-namespace: kencx
+namespace: lorenzodebie
 name: ansible_collection
-version: 0.4.0
+version: 0.4.1
 readme: README.md
 authors:
-  - kencx <ken@cheo.dev>
+  - Lorenzo De Bie <lorenzo@lorenzodebie.be
 
 description: Useful playbooks and roles for homelab
 license:
@@ -16,7 +16,7 @@ tags: []
 # range specifiers can be set and are separated by ','
 dependencies: {}
 
-repository: https://github.com/kencx/ansible-collection
+repository: https://github.com/LorenzoDeBie/ansible-collection
 
 # documentation: http://docs.example.com
 # homepage: http://example.com
